@@ -110,11 +110,15 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
 }
 
-.bd-placeholder-img {
-    background-image: url("https://resizing.flixster.com/tsPYrQ7p5KVnNhTe5EVCQoPZhr0=/206x305/v2/https://flxt.tmsimg.com/assets/p558_p_v10_ap.jpg");
-}
-
 .footer-image {
     width: 10%;
     height: 10%;
+}
+
+.post-link {
+    color: inherit;
+}
+
+.post-link:hover {
+    color: inherit;
 }
