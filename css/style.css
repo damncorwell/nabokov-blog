@@ -115,10 +115,26 @@ h1, h2, h3, h4, h5, h6 {
     height: 10%;
 }
 
-.post-link {
+.blog-post-link {
     color: inherit;
 }
 
-.post-link:hover {
+.blog-post-link:hover {
     color: inherit;
+}
+
+.post-title {
+    margin-bottom: .25rem;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.post-meta {
+    margin-bottom: 1.25rem;
+    color: #999;
+    text-align: center;
+}
+
+.post-text {
+    text-align: justify;
 }
