@@ -2,4 +2,4 @@
 
 Сайт о творчестве В. В. Набокова.
 
-Посмотреть: https://vv-nabokov.netlify.app/
+Посмотреть: https://nabokov.netlify.app/
