@@ -5,6 +5,7 @@ import Interviews from "@/views/Interviews"
 import Publicism from "@/views/Publicism";
 import AnketaOPruste from "@/components/AnketaOPruste";
 import InterviewPeredPremieroiLoliti from "@/components/InterviewPeredPremieroiLoliti";
+import Post from "@/views/Post";
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/interview-pered-premieroi-loliti',
     name: 'Interview pered premieroi Loliti',
     component: InterviewPeredPremieroiLoliti
+  },
+  {
+    path: '/post/:url',
+    name: 'Post',
+    component: Post
   }
 ]
 
