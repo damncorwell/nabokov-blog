@@ -6,17 +6,16 @@
         <form @submit="signIn">
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" v-model="email">
-            <div class="error">{{errors.email}}</div>
+            <input type="email" class="form-control" id="email" v-model="username">
           </div>
           <div class="form-group">
             <label for="password">Пароль</label>
             <input type="password" class="form-control" id="password" v-model="password">
-            <div class="error">{{errors.password}}</div>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-secondary">Войти</button>
           </div>
+          Еще не зарегистрированы? <router-link v-bind:to="{name: 'SignUp'}">Регистрация</router-link>
         </form>
       </div>
     </div>
@@ -24,29 +23,30 @@
 </template>
 
 <script>
-  import user from "@/components/user";
+  import router from "@/router";
   export default {
     name: "SignIn",
     data() {
       return {
-        email: '',
-        password: '',
-        errors: ''
+        username: '',
+        password: ''
       }
     },
     methods: {
-      validate() {
-        this.errors = {}
+      signIn: function (e) {
+        e.preventDefault()
 
-        if (this.email.trim().length === 0) {
-          this.errors.email = 'Заполните Email.'
+        const submissionData = {
+          username: this.username,
+          password: this.password
         }
 
-        if (this.password.trim().length === 0) {
-          this.errors.password = 'Заполните пароль.'
-        }
-
-        return Object.keys(this.errors).length === 0
+        this.$http.post('/user/login', submissionData)
+          .then((response) => {
+            localStorage.setItem('userData', JSON.stringify(response.data))
+            router.push({name: 'Profile'})
+          })
+          .catch((error) => alert(error.response.data.statusText))
       }
     }
 }

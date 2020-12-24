@@ -10,6 +10,8 @@ import Letters from "@/views/Letters";
 import Entomology from "@/views/Entomology";
 import Memories from "@/views/Memories";
 import SignIn from "@/views/SignIn";
+import Profile from "@/views/Profile";
+import SignUp from "@/views/SignUp";
 
 Vue.use(VueRouter)
 
@@ -71,6 +73,16 @@ const routes = [
     meta: {
       layout: 'login-layout'
     }
+  },
+  {
+    path: 'profile',
+    name: 'Profile',
+    component: Profile
+  },
+  {
+    path: 'sign-up',
+    name: 'SignUp',
+    component: SignUp
   }
 ]
 
