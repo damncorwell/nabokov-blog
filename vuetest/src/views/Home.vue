@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import Product from "@/components/products/Product";
 import Jumbotron from "@/components/Jumbotron";
 import Cards from "@/components/Cards";
 import LastAdded from "@/components/LastAdded";

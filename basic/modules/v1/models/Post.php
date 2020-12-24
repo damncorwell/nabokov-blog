@@ -66,17 +66,17 @@ class Post extends BaseModel
     /**
      * @return array|string[]
      */
-    public function behaviors()
-    {
-        $behaviors = parent::behaviors();
-        $behaviors = [
-            'class' => SluggableBehavior::class,
-            'attribute' => 'name',
-            'slugAttribute' => 'url'
-        ];
-
-        return $behaviors;
-    }
+//    public function behaviors()
+//    {
+//        $behaviors = parent::behaviors();
+//        $behaviors = [
+//            'class' => SluggableBehavior::class,
+//            'attribute' => 'name',
+//            'slugAttribute' => 'url'
+//        ];
+//
+//        return $behaviors;
+//    }
 
 
     public function toArray(array $fields = [], array $expand = [], $recursive = true)

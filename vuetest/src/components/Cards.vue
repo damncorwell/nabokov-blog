@@ -24,7 +24,7 @@
           <h3 class="mb-0">Премьера «Лолиты»</h3>
           <div class="mb-1 text-muted">1962</div>
           <p class="mb-auto">Интервью перед премьерой экранизации Стэнли Кубрика.</p>
-          <router-link v-bind:to="{name: 'Interview pered premieroi Loliti'}">Читать</router-link>
+          <router-link v-bind:to="{name: 'Interview pered premieroi filma Lolita'}">Читать</router-link>
         </div>
         <div class="col-auto d-none d-lg-block">
           <img src="https://resizing.flixster.com/tsPYrQ7p5KVnNhTe5EVCQoPZhr0=/206x305/v2/https://flxt.tmsimg.com/assets/p558_p_v10_ap.jpg"

@@ -30,19 +30,23 @@ export default {
   components: {PostsList},
   data() {
     return {
-      list: PostsList
+      list: []
     }
   },
   computed: {
     categoryCritArticles: function() {
-      return this.list.data().posts.filter(post => post.category === 'critical articles')
+      return this.list.filter(post => post.category.name === 'Критические статьи')
     },
     categoryMonograph: function() {
-      return this.list.data().posts.filter(post => post.category === 'monograph')
+      return this.list.filter(post => post.category.name === 'Монографии')
     },
     categoryEssay: function() {
-      return this.list.data().posts.filter(post => post.category === 'essay')
+      return this.list.filter(post => post.category.name === 'Эссе')
     }
+  },
+  created() {
+      this.$http.get('/post/list')
+          .then((response) => this.list = response.data)
   }
 }
 </script>

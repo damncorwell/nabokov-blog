@@ -1,25 +1,14 @@
 <template>
-  <div class="blog-post">
-    <h2 class="post-title">{{post.title}}</h2>
-    <p class="post-meta">
-      <router-link v-if="post.section === 'publicism'"
-                   v-bind:to="{name: 'Publicism'}">Публицистика <br>
-      </router-link>
-      <router-link class="text-success"
-                   v-if="post.section === 'interview'"
-                   v-bind:to="{name: 'Interviews'}">Интервью <br>
-      </router-link>
-      {{post.meta}}
-    </p>
-    <div class="post-text">
-      {{post.text}}
-    </div>
+  <div>
+    <PostFull v-bind:post="post"></PostFull>
   </div>
 </template>
 
 <script>
+import PostFull from "@/components/PostFull";
 export default {
   name: "Post",
+  components: {PostFull},
   data() {
     return {
       post: {}
@@ -27,15 +16,8 @@ export default {
   },
   created() {
     const url =this.$route.params.url
-    // send ajax request
-    this.post = {
-      title: 'Анкета о Прусте',
-      url: url,
-      section: 'publicism',
-      category: 'critical articles',
-      meta: 1930,
-      text: 'Текст поста "Анкета о Прусте"'
-    }
+    this.$http.get('/post/info', {params: {url: url}})
+      .then((response) => this.post = response.data)
   }
 }
 </script>

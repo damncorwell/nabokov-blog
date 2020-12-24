@@ -13,6 +13,7 @@ use Yii;
  * @property string|null $updatedAt Дата изменения
  *
  * @property Post[] $posts
+ * @property Section $section
  */
 class Category extends BaseModel
 {
@@ -47,6 +48,24 @@ class Category extends BaseModel
             'createdAt' => 'Дата создания',
             'updatedAt' => 'Дата изменения',
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function toArray(array $fields = [], array $expand = [], $recursive = true)
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'createdAt' => $this->createdAt,
+            'section' => $this->section
+        ];
+    }
+
+    public function getSection()
+    {
+        return $this->hasOne(Section::class, ['id' => 'sectionId']);
     }
 
     /**

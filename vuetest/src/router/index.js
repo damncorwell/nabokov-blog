@@ -3,9 +3,13 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Interviews from "@/views/Interviews"
 import Publicism from "@/views/Publicism";
-import AnketaOPruste from "@/components/AnketaOPruste";
-import InterviewPeredPremieroiLoliti from "@/components/InterviewPeredPremieroiLoliti";
 import Post from "@/views/Post";
+import Prose from "@/views/Prose";
+import Poetry from "@/views/Poetry";
+import Letters from "@/views/Letters";
+import Entomology from "@/views/Entomology";
+import Memories from "@/views/Memories";
+import SignIn from "@/views/SignIn";
 
 Vue.use(VueRouter)
 
@@ -26,19 +30,47 @@ const routes = [
     component: Publicism
   },
   {
-    path: '/anketa-o-pruste',
-    name: 'Anketa o Pruste',
-    component: AnketaOPruste
-  },
-  {
-    path: '/interview-pered-premieroi-loliti',
-    name: 'Interview pered premieroi Loliti',
-    component: InterviewPeredPremieroiLoliti
-  },
-  {
     path: '/post/:url',
     name: 'Post',
     component: Post
+  },
+  {
+    path: '/post/interview-pered-premieroi-filma-lolita',
+    name: 'Interview pered premieroi filma Lolita',
+    component: Post
+  },
+  {
+    path: '/prose',
+    name: 'Prose',
+    component: Prose
+  },
+  {
+    path: '/poetry',
+    name: 'Poetry',
+    component: Poetry
+  },
+  {
+    path: '/letters',
+    name: 'Letters',
+    component: Letters
+  },
+  {
+    path: '/entomology',
+    name: 'Entomology',
+    component: Entomology
+  },
+  {
+    path: '/memories',
+    name: 'Memories',
+    component: Memories
+  },
+  {
+    path: 'sign-in',
+    name: 'SignIn',
+    component: SignIn,
+    meta: {
+      layout: 'login-layout'
+    }
   }
 ]
 

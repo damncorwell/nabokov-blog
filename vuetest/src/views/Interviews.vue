@@ -24,16 +24,20 @@ export default {
   components: {PostsList},
   data() {
     return {
-      list: PostsList
+      list: []
     }
   },
   computed: {
     categoryRu: function () {
-      return this.list.data().posts.filter(post => post.category === 'interview ru')
+      return this.list.filter(post => post.category.name === 'Интервью на русском и в переводе на русский')
     },
     categoryEn: function () {
-      return this.list.data().posts.filter(post => post.category === 'interview en')
+      return this.list.filter(post => post.category.name === 'Интервью на английском')
     }
+  },
+  created() {
+    this.$http.get('/post/list')
+        .then((response) => this.list = response.data)
   }
 }
 </script>
