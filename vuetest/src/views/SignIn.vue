@@ -44,7 +44,7 @@
         this.$http.post('/user/login', submissionData)
           .then((response) => {
             localStorage.setItem('userData', JSON.stringify(response.data))
-            router.push({name: 'Profile'})
+            location.href = '/'
           })
           .catch((error) => alert(error.response.data.statusText))
       }

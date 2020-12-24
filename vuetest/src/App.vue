@@ -2,16 +2,19 @@
     <div id="app" class="container">
       <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-4 pt-1">
+          <div class="col-4 pt-1" v-if="!user">
             <router-link class="btn btn-sm btn-outline-secondary" v-bind:to="{name: 'SignIn'}">Войти</router-link>
+          </div>
+          <div class="col-4 pt-1" v-else>
+            <router-link class="btn btn-sm btn-outline-secondary" v-bind:to="{name: 'Profile'}">Профиль</router-link>
           </div>
           <div class="col-4 text-center">
             <router-link class="blog-header-logo text-dark" v-bind:to="{name: 'Home'}">Владимир Набоков</router-link>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="text-muted" href="#" aria-label="Search">
+            <router-link class="text-muted" v-bind:to="{name: 'Search'}" aria-label="Search">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-            </a>
+            </router-link>
 
           </div>
         </div>
@@ -43,3 +46,22 @@
       </footer>
     </div>
 </template>
+
+<script>
+export default {
+  name: "default-layout",
+  data() {
+    return {
+      user: null
+    }
+  },
+  created() {
+    if (localStorage.getItem('userData') === null) {
+      return
+    }
+
+    const userData = JSON.parse(localStorage.getItem('userData'))
+    this.user = {...userData}
+  }
+}
+</script>

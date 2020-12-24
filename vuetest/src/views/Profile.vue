@@ -1,6 +1,6 @@
 <template>
   <div class="profile">
-    <h2>Профиль</h2>
+    <h2 class="section-title">Профиль</h2>
     <p>Привет! Это твой профиль.</p>
     <div class="btn-wrapper">
       <button v-if="user" class="btn btn-danger" v-on:click="logout">Выйти</button>

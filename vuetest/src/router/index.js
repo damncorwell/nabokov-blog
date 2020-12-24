@@ -12,6 +12,7 @@ import Memories from "@/views/Memories";
 import SignIn from "@/views/SignIn";
 import Profile from "@/views/Profile";
 import SignUp from "@/views/SignUp";
+import Search from "@/views/Search";
 
 Vue.use(VueRouter)
 
@@ -83,6 +84,11 @@ const routes = [
     path: 'sign-up',
     name: 'SignUp',
     component: SignUp
+  },
+  {
+    path: 'search',
+    name: 'Search',
+    component: Search
   }
 ]
 
