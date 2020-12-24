@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="section-title">Поиск</h2>
-    <!-- Search form -->
+    <hr>
     <input class="form-control" v-model="search" type="text" placeholder="Введите запрос" aria-label="Search">
     <ol class="list-unstyled" v-if="search">
       <li v-for="post in searchList">
