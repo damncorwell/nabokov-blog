@@ -68,7 +68,7 @@ const routes = [
     component: Memories
   },
   {
-    path: 'sign-in',
+    path: '/sign-in',
     name: 'SignIn',
     component: SignIn,
     meta: {
@@ -76,17 +76,17 @@ const routes = [
     }
   },
   {
-    path: 'profile',
+    path: '/profile',
     name: 'Profile',
     component: Profile
   },
   {
-    path: 'sign-up',
+    path: '/sign-up',
     name: 'SignUp',
     component: SignUp
   },
   {
-    path: 'search',
+    path: '/search',
     name: 'Search',
     component: Search
   }
