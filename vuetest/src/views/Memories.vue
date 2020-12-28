@@ -4,13 +4,13 @@
     <hr>
     <h3>Воспоминания Набокова</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryNabokovsMemories">
+      <li v-for="post in nabokovs_memories_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
     <h3>Воспоминания о Набокове</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryAboutNabokov">
+      <li v-for="post in about_nabokov_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
@@ -24,20 +24,15 @@ export default {
   components: {PostsList},
   data() {
     return {
-      list: []
-    }
-  },
-  computed: {
-    categoryNabokovsMemories: function () {
-      return this.list.filter(post => post.category.name === 'Воспоминания Набокова')
-    },
-    categoryAboutNabokov: function () {
-      return this.list.filter(post => post.category.name === 'Воспоминания о Набокове')
+      nabokovs_memories_list: [],
+      about_nabokov_list: []
     }
   },
   created() {
-    this.$http.get('/post/list')
-        .then((response) => this.list = response.data)
+    this.$http.get('/post/list?id=10')
+        .then((response) => this.nabokovs_memories_list = response.data)
+    this.$http.get('/post/list?id=11')
+        .then((response) => this.about_nabokov_list = response.data)
   }
 }
 </script>

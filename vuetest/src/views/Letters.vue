@@ -4,19 +4,19 @@
     <hr>
     <h3>Сбоники писем</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryCollections">
+      <li v-for="post in collections_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
     <h3>Письма Набокова</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryNabokovs">
+      <li v-for="post in nabokovs_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
     <h3>Письма к Набокову</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryToNabokov">
+      <li v-for="post in tonabokov_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
@@ -30,23 +30,16 @@ export default {
   components: {PostsList},
   data() {
     return {
-      list: []
-    }
-  },
-  computed: {
-    categoryCollections: function () {
-      return this.list.filter(post => post.category.name === 'Сборники писем')
-    },
-    categoryNabokovs: function () {
-      return this.list.filter(post => post.category.name === 'Письма Набокова')
-    },
-    categoryToNabokov: function () {
-      return this.list.filter(post => post.category.name === 'Письма к Набокову')
+      collections_list: [],
+      nabokovs_list: [],
+      tonabokov_list: []
     }
   },
   created() {
-    this.$http.get('/post/list')
-        .then((response) => this.list = response.data)
+    this.$http.get('/post/list?id=7')
+        .then((response) => this.collections_list = response.data)
+    this.$http.get('/post/list?id=8')
+        .then((response) => this.nabokovs_list = response.data)
   }
 }
 </script>

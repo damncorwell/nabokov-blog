@@ -31,10 +31,17 @@ class PostController extends ApiController
         return $post;
     }
 
-    public function actionList()
+    public function actionList($id = null)
     {
-        $posts = Post::find()
-            ->all();
+        if ($id) {
+            $posts = Post::find()
+                ->where(['categoryID' => $id])
+                ->all();
+        }
+        else {
+            $posts = Post::find()
+                ->all();
+        }
 
         return $posts;
     }

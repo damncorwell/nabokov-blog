@@ -4,19 +4,19 @@
     <hr>
     <h3>Критические статьи</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryCritArticles">
+      <li v-for="post in crit_articles_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
     <h3>Монографии</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryMonograph">
+      <li v-for="post in monographs_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
     <h3>Эссе</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryEssay">
+      <li v-for="post in essay_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
@@ -30,23 +30,14 @@ export default {
   components: {PostsList},
   data() {
     return {
-      list: []
-    }
-  },
-  computed: {
-    categoryCritArticles: function() {
-      return this.list.filter(post => post.category.name === 'Критические статьи')
-    },
-    categoryMonograph: function() {
-      return this.list.filter(post => post.category.name === 'Монографии')
-    },
-    categoryEssay: function() {
-      return this.list.filter(post => post.category.name === 'Эссе')
+      crit_articles_list: [],
+      monographs_list: [],
+      essay_list: []
     }
   },
   created() {
-      this.$http.get('/post/list')
-          .then((response) => this.list = response.data)
+      this.$http.get('/post/list?id=1')
+          .then((response) => this.crit_articles_list = response.data)
   }
 }
 </script>

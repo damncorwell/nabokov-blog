@@ -4,13 +4,13 @@
     <hr>
     <h3>Интервью на русском и в переводе на русский</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryRu">
+      <li v-for="post in ru_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
     <h3>Интервью на английском</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryEn">
+      <li v-for="post in en_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
@@ -24,20 +24,13 @@ export default {
   components: {PostsList},
   data() {
     return {
-      list: []
-    }
-  },
-  computed: {
-    categoryRu: function () {
-      return this.list.filter(post => post.category.name === 'Интервью на русском и в переводе на русский')
-    },
-    categoryEn: function () {
-      return this.list.filter(post => post.category.name === 'Интервью на английском')
+      ru_list: [],
+      en_list: []
     }
   },
   created() {
-    this.$http.get('/post/list')
-        .then((response) => this.list = response.data)
+    this.$http.get('/post/list?id=2')
+        .then((response) => this.ru_list = response.data)
   }
 }
 </script>

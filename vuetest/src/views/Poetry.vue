@@ -4,13 +4,13 @@
     <hr>
     <h3>Поэмы</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryPoems">
+      <li v-for="post in poems_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
     <h3>Стихи</h3>
     <ol class="list-unstyled">
-      <li v-for="post in categoryVerses">
+      <li v-for="post in verses_list">
         <PostsList v-bind:post="post"></PostsList>
       </li>
     </ol>
@@ -24,20 +24,15 @@ export default {
   components: {PostsList},
   data() {
     return {
-      list: []
-    }
-  },
-  computed: {
-    categoryPoems: function () {
-      return this.list.filter(post => post.category.name === 'Поэмы')
-    },
-    categoryVerses: function () {
-      return this.list.filter(post => post.category.name === 'Стихи')
+      poems_list: [],
+      verses_list: []
     }
   },
   created() {
-    this.$http.get('/post/list')
-        .then((response) => this.list = response.data)
+    this.$http.get('/post/list?id=5')
+        .then((response) => this.poems_list = response.data)
+    this.$http.get('/post/list?id=6')
+        .then((response) => this.poems_list = response.data)
   }
 }
 </script>
