@@ -15,7 +15,6 @@
           <div class="form-group">
             <button type="submit" class="btn btn-secondary">Войти</button>
           </div>
-          Еще не зарегистрированы? <router-link v-bind:to="{name: 'SignUp'}">Регистрация</router-link>
         </form>
       </div>
     </div>
@@ -23,7 +22,7 @@
 </template>
 
 <script>
-  import router from "@/router";
+  import user from "@/components/user";
   export default {
     name: "SignIn",
     data() {
@@ -43,7 +42,7 @@
 
         this.$http.post('/user/login', submissionData)
           .then((response) => {
-            localStorage.setItem('userData', JSON.stringify(response.data))
+            user.login(response.data)
             location.href = '/'
           })
           .catch((error) => alert(error.response.data.statusText))

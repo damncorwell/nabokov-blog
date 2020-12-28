@@ -9,25 +9,17 @@
 </template>
 
 <script>
+import user from "@/components/user";
 export default {
   name: "Profile",
   data() {
     return {
-      user: null
+      user: user
     }
-  },
-  created() {
-    if (localStorage.getItem('userData') === null) {
-      return
-    }
-
-    const userData = JSON.parse(localStorage.getItem('userData'))
-    this.user = {...userData}
   },
   methods: {
     logout() {
-      localStorage.removeItem('userData')
-      this.user = null
+      user.logout()
       location.href = '/'
     }
   }

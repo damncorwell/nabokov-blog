@@ -1,29 +1,26 @@
 export default {
     name: null,
-        email: null,
+        username: null,
         accessToken: null,
         isAuth() {
         this.load()
         return this.accessToken !== null
     },
     login(data) {
-        localStorage.setItem('user', JSON.stringify(data))
-        this.name = data.name
-        this.email = data.email
+        localStorage.setItem('userData', JSON.stringify(data))
+        this.username = data.username
         this.accessToken = data.accessToken
     },
     logout() {
-        localStorage.removeItem('user')
-        this.name = null
-        this.email = null
+        localStorage.removeItem('userData')
+        this.username = null
         this.accessToken = null
     },
     load() {
-        let data = localStorage.getItem('user')
+        let data = localStorage.getItem('userData')
         if (data !== null && data !== '') {
             data = JSON.parse(data)
-            this.name = data.name
-            this.email = data.email
+            this.username = data.username
             this.accessToken = data.accessToken
         }
     }

@@ -2,7 +2,7 @@
     <div id="app" class="container">
       <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-4 pt-1" v-if="!user">
+          <div class="col-4 pt-1" v-if="!user.isAuth()">
             <router-link class="btn btn-sm btn-outline-secondary" v-bind:to="{name: 'SignIn'}">Войти</router-link>
           </div>
           <div class="col-4 pt-1" v-else>
@@ -48,20 +48,13 @@
 </template>
 
 <script>
+import user from "@/components/user";
 export default {
   name: "default-layout",
   data() {
     return {
-      user: null
+      user: user
     }
-  },
-  created() {
-    if (localStorage.getItem('userData') === null) {
-      return
-    }
-
-    const userData = JSON.parse(localStorage.getItem('userData'))
-    this.user = {...userData}
   }
 }
 </script>
